@@ -948,6 +948,11 @@ void RADIO_PrepareTX(void)
 	}
 #endif
 
+#ifndef ENABLE_TX
+	// Force disable TX
+	State = VFO_STATE_TX_DISABLE;
+#endif
+
 	if (State != VFO_STATE_NORMAL) {
 		// TX not allowed
 		RADIO_SetVfoState(State);
